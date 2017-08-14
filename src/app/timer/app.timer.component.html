@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>{{minutes}} : {{seconds | number: '2.0'}}</h1>
+  <p>
+    <button class="btn btn-success" (click)="togglePause()">{{buttonLabel}}</button>
+  </p>
+  <app-countdown [seconds]="25" (complete)="onCountDownComplete()" #counter></app-countdown>
+  <p *ngIf="counter.seconds < 10">
+    Beware! only <strong>{{counter.seconds}} seconds</strong> left.
+  </p>
+  <button class="btn btn-warning" (click)="counter.seconds = 25">Reset countdown to 25 seconds</button>
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+  <app-pomodoros-icons [queuedPomodorod]="queuedPomodorod" [countsTomato]="countsTomato"></app-pomodoros-icons>
+  <h4 class="text-center">Tasks backlog</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task ID</th>
+        <th>Task name</th>
+        <th class="hidden-xs">Deliver by</th>
+        <th class="hidden-xs">Pomodoros</th>
+        <th>Actions</th>
+        <th class="hidden-xs">To Timer</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks;let i = index">
+      <th scope="row">
+        {{i}}
+        <span *ngIf="task.queued" class="label label-info">
+          Queued
+        </span>
+      </th>
+      <td>
+        {{task.name | slice: 0:35}}<span [hidden]="task.name.length < 35">...</span>
+      </td>
+      <td class="hidden-xs">
+        {{task.deadline | date: 'fullDate'}}
+        <span *ngIf="task.deadline < today" class="label label-danger">Due</span>
+      </td>
+      <td class="hidden-xs">{{task.pomodorosRequired}}</td>
+      <td>
+        <button class="btn btn-success btn-sm" (click)="toggleTask(task)" [ngSwitch]="task.queued">
+          <span *ngSwitchCase="false">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            Add
+          </span>
+          <span *ngSwitchCase="true">
+            <i class="glyphicon glyphicon-minus-sign"></i>
+            Remove
+          </span>
+          <span *ngSwitchDefault>
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            Add
+          </span>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="goToTimer()">to timer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

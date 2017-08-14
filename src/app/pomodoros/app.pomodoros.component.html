@@ -1,0 +1,10 @@
+<h3>
+  {{ queuedPomodorod | timePomodoros }} for today
+  <span class="small" *ngIf="queuedPomodorod > 0">
+      (Estimated time: {{ queuedPomodorod * 25 | datePomodoros }})
+    </span>
+</h3>
+<a href="#" *ngFor="let tomats of countsTomato">
+  <img src="assets/images/pomodoro.png" data-placement="bottom" data-toggle="tooltip" title="{{tomats + 1}} pomodoros for today" width="50"/>
+</a>
+
