@@ -12,11 +12,24 @@ export class AppAddTaskComponent{
   date = new Date().toString();
 
   constructor(private taskService: TaskService){
+    this.defaultTask();
+  }
+
+  defaultTask(): void {
     this.task = {
       name: '',
       deadline: new Date(this.date),
       queued: false,
       pomodorosRequired: 0,
     }
+  }
+
+  addTask(task: Task): void {
+    this.taskService.addTask(task)
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+    this.defaultTask();
   }
 }

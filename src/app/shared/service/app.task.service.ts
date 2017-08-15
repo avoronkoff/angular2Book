@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interface/task';
-import { Http } from "@angular/http";
-
-import 'rxjs/add/operator/toPromise';
+import { Http } from '@angular/http';
 import { Observable } from "rxjs";
+
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export default class TaskService {
   private tasksUrl = 'api/tasks';
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getTasks(): Observable<Task[]> {
     return this.http.get(this.tasksUrl)
-      .map(response => response.json().data)
-      .catch(this.handleError.bind(this));
+      .map(response => response.json().data);
   }
 
-  private handleError (error: any) {
-    let errMsg = error.message || 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
+  addTask(task: Task): Observable<Task> {
+    return this.http.post(this.tasksUrl, JSON.stringify(task), this.headers)
+      .map(response => response.json().data)
   }
 }
 
