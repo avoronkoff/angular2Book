@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interface/task';
 import { Http } from '@angular/http';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs/';
 
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export default class TaskService {
@@ -19,7 +19,7 @@ export default class TaskService {
 
   addTask(task: Task): Observable<Task> {
     return this.http.post(this.tasksUrl, JSON.stringify(task), this.headers)
-      .map(response => response.json().data)
+      .map(response => response.json().data);
   }
 }
 

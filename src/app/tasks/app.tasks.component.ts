@@ -12,10 +12,10 @@ export class AppTasksComponent implements OnInit{
   today: Date;
   tasks: Task[];
   countsTomato: Array<number>;
-  queuedPomodorod: number = 0;
+  queuedPomodorod: number;
 
   constructor(private taskService: TaskService,
-              private router: Router,) {
+              private router: Router) {
     this.today = new Date();
   }
 
