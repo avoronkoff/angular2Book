@@ -21,5 +21,10 @@ export default class TaskService {
     return this.http.post(this.tasksUrl, JSON.stringify(task), this.headers)
       .map(response => response.json().data);
   }
+
+  getTask(id: number): Observable<Task> {
+    return this.http.get(this.tasksUrl)
+      .map(response => response.json().data.find(task => task.id === id));
+  }
 }
 

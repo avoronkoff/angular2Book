@@ -21,7 +21,9 @@
         </span>
       </th>
       <td>
-        {{task.name | slice: 0:35}}<span [hidden]="task.name.length < 35">...</span>
+        <a [routerLink]="['/detail', task.id]">
+          {{task.name | slice: 0:35}}<span [hidden]="task.name.length < 35">...</span>
+        </a>
       </td>
       <td class="hidden-xs">
         {{task.deadline | date: 'fullDate'}}

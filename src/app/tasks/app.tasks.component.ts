@@ -17,6 +17,7 @@ export class AppTasksComponent implements OnInit{
   constructor(private taskService: TaskService,
               private router: Router) {
     this.today = new Date();
+    this.queuedPomodorod = 0;
   }
 
   getTasks(): void {

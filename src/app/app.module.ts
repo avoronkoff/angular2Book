@@ -13,7 +13,8 @@ import { ApppNavbarComponent } from './navbar/app.navbar.component';
 import { AppTimerComponent } from './timer/app.timer.component';
 import { AppTasksComponent } from './tasks/app.tasks.component';
 import { AppPomodoroIconsComponent } from './pomodoros/app.pomodoros.component';
-import { AppAddTaskComponent } from './addTask/app.add-task.component';
+import { AppAddTaskComponent } from './addtask/app.add-task.component';
+import { AppDetailComponent } from './detailtask/app.detail-task.component';
 
 import { TaskService } from './shared/app.shared';
 import { TimePomodoros } from './shared/app.shared';
@@ -31,7 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     TimePomodoros,
     DatePomodoros,
     AppPomodoroIconsComponent,
-    AppAddTaskComponent
+    AppAddTaskComponent,
+    AppDetailComponent
   ],
   imports: [
     BrowserModule,
