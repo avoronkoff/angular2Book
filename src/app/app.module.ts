@@ -15,6 +15,7 @@ import { AppTasksComponent } from './tasks/app.tasks.component';
 import { AppPomodoroIconsComponent } from './pomodoros/app.pomodoros.component';
 import { AppAddTaskComponent } from './addtask/app.add-task.component';
 import { AppDetailComponent } from './detailtask/app.detail-task.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { TaskService } from './shared/app.shared';
 import { TimePomodoros } from './shared/app.shared';
@@ -40,7 +41,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    TextMaskModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
       <label for="deliver">Deliver</label>
-      <input type="text" name="deadline" class="form-control" id="deliver" placeholder="deliver by" [(ngModel)]="task.deadline">
+      <input type="text" name="deadline" class="form-control" id="deliver" placeholder="deliver by" [(ngModel)]="task.deadline" [textMask]="{mask: mask}" >
     </div>
     <div class="form-group">
       <label for="pomodoros">Pomodoros</label>

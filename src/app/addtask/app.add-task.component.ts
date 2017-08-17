@@ -9,30 +9,25 @@ import { TaskService } from '../shared/app.shared';
 
 export class AppAddTaskComponent{
   task: Task;
+  mask = [/\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   constructor(private taskService: TaskService){
     this.defaultTask();
   }
 
-  newGuid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      let r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-      return v.toString(16);
-    });
-  }
-
   defaultTask(): void {
     this.task = {
-      id: this.newGuid(),
+      id: Math.floor(Math.random() * 1000) + 1,
       name: '',
-      deadline: new Date('Jun 23 2015'),
       queued: false,
       pomodorosRequired: 0,
     }
   }
 
   addTask(task: Task): void {
-    console.log(task);
+    let dates = task.deadline.toString().replace(/-/g, ',').split(",").map(item => parseInt(item)).reverse();
+    task.deadline = new Date(dates[0], dates[1], dates[2]);
+
     this.taskService.addTask(task)
       .subscribe(
         error => console.log(error)
