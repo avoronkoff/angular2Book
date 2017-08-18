@@ -10,6 +10,7 @@ import { TaskService } from '../shared/app.shared';
 export class AppAddTaskComponent{
   task: Task;
   mask = [/\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
 
   constructor(private taskService: TaskService){
     this.defaultTask();
@@ -21,12 +22,12 @@ export class AppAddTaskComponent{
       name: '',
       queued: false,
       pomodorosRequired: 0,
-    }
+    };
   }
 
   addTask(task: Task): void {
-    let dates = task.deadline.toString().replace(/-/g, ',').split(",").map(item => parseInt(item)).reverse();
-    task.deadline = new Date(dates[0], dates[1], dates[2]);
+    task.deadline = new Date(task.deadline.toString()
+      .replace(this.pattern, '$3-$2-$1'));
 
     this.taskService.addTask(task)
       .subscribe(
