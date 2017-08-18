@@ -5,11 +5,13 @@ import { TaskService } from '../shared/app.shared';
 @Component({
   selector: 'app-add-task',
   templateUrl: './app.add-task.component.html',
+  styleUrls: ['./app.add-task.component.css']
 })
 
 export class AppAddTaskComponent {
   task: Task;
-  mask = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+  // mask = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+  mask = /(\d{4})\.(\d{2})\.(\d{4})/;
   pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
 
   constructor(private taskService: TaskService) {

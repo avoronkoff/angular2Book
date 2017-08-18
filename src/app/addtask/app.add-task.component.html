@@ -6,10 +6,14 @@
              [(ngModel)]="task.name" name="name" #name="ngModel" [rangeLength]="[2, 10]">
     </div>
 
-    <div class="form-group" [ngClass]="{'has-error': (deadline.errors?.date && deadline.errors?.rangeLength)}">
-      <label for="deliver">Deliver</label>
-      <input type="text" class="form-control" id="deliver" name="deadline"
-             [(ngModel)]="task.deadline" #deadline="ngModel" date placeholder="2015-02-10" [rangeLength]="[10, 10]">
+    <div class="form-group" [ngClass]="{'has-error': deadline.hasError('pattern')}">
+      <label for="deadline">deadline</label>
+      <input type="text" class="form-control" id="deadline"
+             required
+             pattern="\d{4}-\d{2}-\d{2}"
+             [(ngModel)]="task.deadline" name="deadline"
+             #deadline="ngModel"
+             placeholder="2015-02-10">
     </div>
 
     <div class="form-group" [ngClass]="{'has-error': pomodorosRequired.errors?.min}">
