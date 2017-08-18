@@ -7,12 +7,12 @@ import { TaskService } from '../shared/app.shared';
   templateUrl: './app.add-task.component.html',
 })
 
-export class AppAddTaskComponent{
+export class AppAddTaskComponent {
   task: Task;
-  mask = [/\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  mask = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
   pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
 
-  constructor(private taskService: TaskService){
+  constructor(private taskService: TaskService) {
     this.defaultTask();
   }
 
@@ -21,7 +21,7 @@ export class AppAddTaskComponent{
       id: Math.floor(Math.random() * 1000) + 1,
       name: '',
       queued: false,
-      pomodorosRequired: 0,
+      pomodorosRequired: 1,
     };
   }
 

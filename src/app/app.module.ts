@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { CustomFormsModule } from 'ng2-validation'
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './main/app.component';
 import { AppCountdownComponent } from './countdown/app.countdown.component';
@@ -42,7 +43,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
-    TextMaskModule
+    TextMaskModule,
+    CustomFormsModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
