@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { CustomFormsModule } from 'ng2-validation'
+import { DatePickerModule } from 'angular-io-datepicker';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -16,7 +16,6 @@ import { AppTasksComponent } from './tasks/app.tasks.component';
 import { AppPomodoroIconsComponent } from './pomodoros/app.pomodoros.component';
 import { AppAddTaskComponent } from './addtask/app.add-task.component';
 import { AppDetailComponent } from './detailtask/app.detail-task.component';
-import { TextMaskModule } from 'angular2-text-mask';
 
 import { TaskService } from './shared/app.shared';
 import { TimePomodoros } from './shared/app.shared';
@@ -43,8 +42,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
-    TextMaskModule,
-    CustomFormsModule
+    ReactiveFormsModule,
+    DatePickerModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

@@ -1,29 +1,43 @@
 <div class="container">
   <form class="well">
-    <div class="form-group" [ngClass]="{'has-error': name.errors?.rangeLength}">
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['name'].valid && complexForm.controls['name'].touched}">
       <label for="task_name">Task</label>
-      <input type="text" class="form-control" id="task_name" placeholder="task name"
-             [(ngModel)]="task.name" name="name" #name="ngModel" [rangeLength]="[2, 10]">
+      <input type="text"
+             class="form-control"
+             id="task_name"
+             placeholder="task name"
+             name="name"
+             [formControl]="complexForm.controls['name']">
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['name'].valid && complexForm.controls['name'].touched">
+      wrong length name.
     </div>
 
-    <div class="form-group" [ngClass]="{'has-error': deadline.hasError('pattern')}">
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['deadline'].valid && complexForm.controls['deadline'].touched}">
       <label for="deadline">deadline</label>
-      <input type="text" class="form-control" id="deadline"
-             required
-             pattern="\d{4}-\d{2}-\d{2}"
-             [(ngModel)]="task.deadline" name="deadline"
-             #deadline="ngModel"
-             placeholder="2015-02-10">
+      <date-picker id="deadline" [formControl]="complexForm.controls['deadline']" [showClearButton]="false"></date-picker>
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['deadline'].valid && complexForm.controls['deadline'].touched">
+      wrong date format.
     </div>
 
-    <div class="form-group" [ngClass]="{'has-error': pomodorosRequired.errors?.min}">
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['pomodorosRequired'].valid && complexForm.controls['pomodorosRequired'].touched}">
       <label for="pomodoros">Pomodoros</label>
-      <input type="number" name="pomodorosRequired" class="form-control" id="pomodoros" placeholder="pomodoros counts"
-             [(ngModel)]="task.pomodorosRequired" name="pomodorosRequired" #pomodorosRequired="ngModel" [min]="1">
+      <input type="number"
+             name="pomodorosRequired"
+             class="form-control"
+             id="pomodoros"
+             placeholder="pomodoros counts"
+             [formControl]="complexForm.controls['pomodorosRequired']">
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['pomodorosRequired'].valid && complexForm.controls['pomodorosRequired'].touched">
+      wrong count.
     </div>
 
     <div class="form-group">
-      <button class="btn btn-success" (click)="addTask(task)">add task</button>
+      <button class="btn btn-success"
+              (click)="addTask(complexForm.value)"
+              [disabled]="!complexForm.valid">add task</button>
     </div>
   </form>
 </div>

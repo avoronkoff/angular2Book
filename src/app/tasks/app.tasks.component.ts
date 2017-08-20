@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
 import { Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -24,8 +25,15 @@ export class AppTasksComponent implements OnInit{
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  goToTimer(): void {
-    this.router.navigate(['/timer']);
+  goToTimer(id: number): void {
+    this.router.navigate([`/timer/${id}`]);
+  }
+
+  deleteTask(i): void {
+    this.taskService.deleteTask(i)
+      .subscribe(
+        () => this.tasks.splice(i, 1)
+      );
   }
 
   toggleTask(task: Task): void {

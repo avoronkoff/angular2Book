@@ -1,21 +1,24 @@
 import { Component } from '@angular/core';
 import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
 @Component({
   selector: 'app-add-task',
-  templateUrl: './app.add-task.component.html',
-  styleUrls: ['./app.add-task.component.css']
+  templateUrl: './app.add-task.component.html'
 })
 
 export class AppAddTaskComponent {
+  complexForm : FormGroup;
   task: Task;
-  // mask = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
-  mask = /(\d{4})\.(\d{2})\.(\d{4})/;
-  pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, fb: FormBuilder) {
     this.defaultTask();
+    this.complexForm = fb.group({
+      'name' : [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(10)])],
+      'deadline' : [null, Validators.required],
+      'pomodorosRequired': [null, Validators.compose([Validators.required, Validators.min(0), Validators.max(1000)])],
+    })
   }
 
   defaultTask(): void {
@@ -27,14 +30,9 @@ export class AppAddTaskComponent {
     };
   }
 
-  addTask(task: Task): void {
-    task.deadline = new Date(task.deadline.toString()
-      .replace(this.pattern, '$3-$2-$1'));
-
-    this.taskService.addTask(task)
-      .subscribe(
-        error => console.log(error)
-      );
+  addTask(task: any){
+    task.deadline =  new Date(task.deadline.format('YYYY.MM.DD'));
+    this.taskService.addTask(task).subscribe();
     this.defaultTask();
   }
 }

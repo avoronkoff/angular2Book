@@ -9,7 +9,7 @@ import { AppDetailComponent } from './detailtask/app.detail-task.component';
 const routes: Routes = [
   { path: '', redirectTo: '/tasks', pathMatch: 'full' },
   { path: 'tasks',  component: AppTasksComponent },
-  { path: 'timer', component: AppTimerComponent },
+  { path: 'timer/:id', component: AppTimerComponent },
   { path: 'add-task', component: AppAddTaskComponent },
   { path: 'detail/:id', component: AppDetailComponent }
 ];

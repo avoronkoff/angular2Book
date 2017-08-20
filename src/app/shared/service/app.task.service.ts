@@ -17,10 +17,17 @@ export default class TaskService {
       .map(response => response.json().data);
   }
 
-  addTask(task: Task): Observable<Task> {
+  addTask(task: any): Observable<Task> {
     return this.http.post(this.tasksUrl, JSON.stringify(task), this.headers)
       .map(response => response.json().data);
   }
+
+  deleteTask(id: number): Observable<Task[]> {
+    const url = `${this.tasksUrl}/${id}`;
+    return this.http.delete(url, this.headers)
+      .map((response) => response.json());
+  }
+
 
   getTask(id: number): Observable<Task> {
     return this.http.get(this.tasksUrl)

@@ -4,12 +4,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Task ID</th>
+        <th>ID</th>
         <th>Task name</th>
         <th class="hidden-xs">Deliver by</th>
         <th class="hidden-xs">Pomodoros</th>
         <th>Actions</th>
-        <th class="hidden-xs">To Timer</th>
+        <th>Timer</th>
+        <th class="hidden-xs">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +32,7 @@
       </td>
       <td class="hidden-xs">{{task.pomodorosRequired}}</td>
       <td>
-        <button class="btn btn-success btn-sm" (click)="toggleTask(task)" [ngSwitch]="task.queued">
+        <button class="btn btn-success btn-xs" (click)="toggleTask(task)" [ngSwitch]="task.queued">
           <span *ngSwitchCase="false">
             <i class="glyphicon glyphicon-plus-sign"></i>
             Add
@@ -47,7 +48,10 @@
         </button>
       </td>
       <td>
-        <button class="btn btn-danger" (click)="goToTimer()">to timer</button>
+        <button class="btn btn-danger btn-xs" (click)="goToTimer(i)">to timer</button>
+      </td>
+      <td class="hidden-xs">
+        <button class="btn btn-warning btn-xs" (click)="deleteTask(i); $event.stopPropagation()">delete</button>
       </td>
     </tr>
     </tbody>
