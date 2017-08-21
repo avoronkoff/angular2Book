@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
 import { Router } from '@angular/router';
-import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
