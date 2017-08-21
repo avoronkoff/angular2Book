@@ -1,5 +1,7 @@
 <div class="container">
-  <form class="well">
+  <form class="well"
+
+  >
     <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['name'].valid && complexForm.controls['name'].touched}">
       <label for="task_name">Task</label>
       <input type="text"
@@ -15,7 +17,7 @@
 
     <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['deadline'].valid && complexForm.controls['deadline'].touched}">
       <label for="deadline">deadline</label>
-      <date-picker id="deadline" [formControl]="complexForm.controls['deadline']" [showClearButton]="false"></date-picker>
+      <date-picker id="deadline" [formControl]="complexForm.controls['deadline']"></date-picker>
     </div>
     <div class="alert alert-danger" *ngIf="!complexForm.controls['deadline'].valid && complexForm.controls['deadline'].touched">
       wrong date format.

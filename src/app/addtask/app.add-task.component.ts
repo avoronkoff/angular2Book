@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 })
 
 export class AppAddTaskComponent {
-  complexForm : FormGroup;
+  complexForm: FormGroup;
   task: Task;
 
   constructor(private taskService: TaskService, fb: FormBuilder) {
@@ -18,7 +18,7 @@ export class AppAddTaskComponent {
       'name' : [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(10)])],
       'deadline' : [null, Validators.required],
       'pomodorosRequired': [null, Validators.compose([Validators.required, Validators.min(0), Validators.max(1000)])],
-    })
+    });
   }
 
   defaultTask(): void {
@@ -30,9 +30,9 @@ export class AppAddTaskComponent {
     };
   }
 
-  addTask(task: any){
+  addTask(task: any) {
     task.deadline =  new Date(task.deadline.format('YYYY.MM.DD'));
     this.taskService.addTask(task).subscribe();
-    this.defaultTask();
+    this.complexForm.reset();
   }
 }
