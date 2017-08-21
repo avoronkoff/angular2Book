@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
+import { ActiveGuard } from '../shared/service/app.guard.service';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
 @Component({
@@ -12,7 +13,7 @@ export class AppAddTaskComponent {
   complexForm : FormGroup;
   task: Task;
 
-  constructor(private taskService: TaskService, fb: FormBuilder) {
+  constructor(private taskService: TaskService, fb: FormBuilder, private activeGuard :ActiveGuard) {
     this.defaultTask();
     this.complexForm = fb.group({
       'name' : [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(10)])],
@@ -31,8 +32,9 @@ export class AppAddTaskComponent {
   }
 
   addTask(task: any){
-    task.deadline =  new Date(task.deadline.format('YYYY.MM.DD'));
+    task.deadline = new Date(task.deadline.format('YYYY.MM.DD'));
     this.taskService.addTask(task).subscribe();
-    this.defaultTask();
+    this.activeGuard.validateForm(this.complexForm.valid);
+    this.complexForm.reset();
   }
 }
