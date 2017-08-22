@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
-import { ActiveGuard } from '../shared/service/app.guard.service';
+import { CanActivateGuard } from '../shared/app.shared';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ export class AppAddTaskComponent {
   complexForm: FormGroup;
   task: Task;
 
-  constructor(private taskService: TaskService, fb: FormBuilder, private activeGuard :ActiveGuard) {
+  constructor(private taskService: TaskService, fb: FormBuilder, private canActivateGuard: CanActivateGuard) {
     this.defaultTask();
     this.complexForm = fb.group({
       'name' : [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(10)])],
@@ -31,10 +31,14 @@ export class AppAddTaskComponent {
     };
   }
 
-  addTask(task: any){
+  canDeactivate() {
+    return window.confirm('change page?');
+  }
+
+  addTask(task: any) {
     task.deadline = new Date(task.deadline.format('YYYY.MM.DD'));
     this.taskService.addTask(task).subscribe();
-    this.activeGuard.validateForm(this.complexForm.valid);
+    this.canActivateGuard.validateForm(this.complexForm.valid);
     this.complexForm.reset();
   }
 }

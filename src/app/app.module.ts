@@ -22,7 +22,8 @@ import { TimePomodoros } from './shared/app.shared';
 import { DatePomodoros } from './shared/app.shared';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ActiveGuard } from './shared/service/app.guard.service';
+import { CanActivateGuard } from './shared/app.shared';
+import { CanDeactivateGuard } from './shared/app.shared';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ActiveGuard } from './shared/service/app.guard.service';
     ReactiveFormsModule,
     DatePickerModule
   ],
-  providers: [TaskService, ActiveGuard],
+  providers: [TaskService, CanActivateGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 

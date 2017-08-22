@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CanActivateGuard } from '../shared/app.shared';
 
 @Component({
   selector: 'app-navbar',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.navbar.component.css']
 })
 
-export class ApppNavbarComponent {}
+export class ApppNavbarComponent {
+  valid: boolean;
+  constructor(private canActivateGuard: CanActivateGuard){
+    this.valid = this.canActivateGuard.valid;
+  }
+}
