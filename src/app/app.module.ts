@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { DatePickerModule } from 'angular-io-datepicker';
+import { DatepickerModule } from 'angular2-material-datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -45,7 +46,8 @@ import { CanDeactivateGuard } from './shared/app.shared';
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
     ReactiveFormsModule,
-    DatePickerModule
+    DatepickerModule,
+    BrowserAnimationsModule
   ],
   providers: [TaskService, CanActivateGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]

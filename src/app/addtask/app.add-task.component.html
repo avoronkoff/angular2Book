@@ -21,6 +21,7 @@
                [formControl]="complexForm.controls['deadline']"
                name="deadline"
                placeholder="2015.02.10">
+      <!--<material-datepicker [(date)]="task.deadline"></material-datepicker>-->
     </div>
     <div class="alert alert-danger" *ngIf="!complexForm.controls['deadline'].valid && complexForm.controls['deadline'].touched">
       wrong date format.
