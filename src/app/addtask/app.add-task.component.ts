@@ -3,7 +3,11 @@ import { Task } from '../shared/interface/task';
 import { TaskService } from '../shared/app.shared';
 import { CanActivateGuard } from '../shared/app.shared';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+<<<<<<< HEAD
 import {Router} from '@angular/router';
+=======
+import { Router } from '@angular/router';
+>>>>>>> d6a4ca425f0ffe3d336f34e8560de960e23ad22f
 
 @Component({
   selector: 'app-add-task',
