@@ -32,11 +32,11 @@ import { CanDeactivateGuard } from './shared/app.shared';
     ApppNavbarComponent,
     AppTimerComponent,
     AppTasksComponent,
-    TimePomodoros,
-    DatePomodoros,
     AppPomodoroIconsComponent,
     AppAddTaskComponent,
-    AppDetailComponent
+    AppDetailComponent,
+    TimePomodoros,
+    DatePomodoros
   ],
   imports: [
     BrowserModule,
