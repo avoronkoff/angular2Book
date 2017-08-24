@@ -7,14 +7,14 @@ import { AppAddTaskComponent } from './addtask/app.add-task.component';
 import { AppDetailComponent } from './detailtask/app.detail-task.component';
 
 import { CanActivateGuard } from './shared/app.shared';
-import { CanDeactivateGuard } from './shared/app.shared';
+// import { CanDeactivateGuard } from './shared/app.shared';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/add-task', pathMatch: 'full' },
   { path: 'tasks',  component: AppTasksComponent, canActivate: [CanActivateGuard] },
   { path: 'timer/:id', component: AppTimerComponent },
-  { path: 'add-task', component: AppAddTaskComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: 'detail/:id', component: AppDetailComponent }
+  { path: 'add-task', component: AppAddTaskComponent },
+  { path: 'detail/:id', component: AppDetailComponent },
+  { path: '', redirectTo: '/add-task', pathMatch: 'full' },
 ];
 
 @NgModule({
