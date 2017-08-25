@@ -8,14 +8,14 @@ import { AppDetailComponent } from './detailtask/app.detail-task.component';
 import { AppSigninComponent } from './signin/app.signin.component';
 
 import { CanActivateGuard } from './shared/app.shared';
-import { CanDeactivateGuard } from './shared/app.shared';
+// import { CanDeactivateGuard } from './shared/app.shared';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/add-task', pathMatch: 'full' },
   { path: 'tasks',  component: AppTasksComponent, canActivate: [CanActivateGuard] },
   { path: 'timer/:id', component: AppTimerComponent },
-  { path: 'add-task', component: AppAddTaskComponent, canDeactivate: [CanDeactivateGuard] },
+  { path: 'add-task', component: AppAddTaskComponent },
   { path: 'detail/:id', component: AppDetailComponent },
+  { path: '', redirectTo: '/add-task', pathMatch: 'full' },
   { path: 'sign-in', component: AppSigninComponent }
 ];
 
