@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.tasks.component.html'
 })
 
-export class AppTasksComponent implements OnInit{
+export class AppTasksComponent implements OnInit {
   today: Date;
   tasks: Task[];
   countsTomato: Array<number>;

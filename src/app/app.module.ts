@@ -17,6 +17,7 @@ import { AppTasksComponent } from './tasks/app.tasks.component';
 import { AppPomodoroIconsComponent } from './pomodoros/app.pomodoros.component';
 import { AppAddTaskComponent } from './addtask/app.add-task.component';
 import { AppDetailComponent } from './detailtask/app.detail-task.component';
+import { AppSigninComponent } from './signin/app.signin.component';
 
 import { TaskService } from './shared/app.shared';
 import { TimePomodoros } from './shared/app.shared';
@@ -37,7 +38,8 @@ import { CanDeactivateGuard } from './shared/app.shared';
     AppAddTaskComponent,
     AppDetailComponent,
     TimePomodoros,
-    DatePomodoros
+    DatePomodoros,
+    AppSigninComponent
   ],
   imports: [
     BrowserModule,
