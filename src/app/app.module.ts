@@ -22,6 +22,7 @@ import { AppSigninComponent } from './signin/app.signin.component';
 import { TaskService } from './shared/app.shared';
 import { TimePomodoros } from './shared/app.shared';
 import { DatePomodoros } from './shared/app.shared';
+import { AuthenticationService } from './shared/app.shared';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CanActivateGuard } from './shared/app.shared';
@@ -51,7 +52,7 @@ import { CanDeactivateGuard } from './shared/app.shared';
     DatepickerModule,
     BrowserAnimationsModule
   ],
-  providers: [TaskService, CanActivateGuard, CanDeactivateGuard],
+  providers: [TaskService, CanActivateGuard, CanDeactivateGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 

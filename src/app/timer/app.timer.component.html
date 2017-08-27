@@ -1,4 +1,5 @@
 <div class="container">
+  <img src="assets/images/pomodoro.png" width="50" [ngClass]="{ pulse: !isPaused }" [@timerOut]="'in'"/>
   <h1>{{minutes}} : {{seconds | number: '2.0'}}</h1>
   <p>
     <button class="btn btn-success" (click)="togglePause()">{{buttonLabel}}</button>

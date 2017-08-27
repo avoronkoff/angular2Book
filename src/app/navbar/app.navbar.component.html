@@ -10,9 +10,10 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a routerLink="/tasks">Tasks</a></li>
-        <li><a routerLink="/add-task">Add Task</a></li>
-        <li><a routerLink="/sign-in">Sign in</a></li>
+        <li *ngIf="userlsLoggedln"><a routerLink="/tasks">Tasks</a></li>
+        <li *ngIf="userlsLoggedln"><a routerLink="/add-task">Add Task</a></li>
+        <li *ngIf="!userlsLoggedln"><a routerLink="/sign-in">Sign in</a></li>
+        <li *ngIf="userlsLoggedln"><a href="#" (click)="logout($event)">Logout</a></li>
       </ul>
     </div>
   </div>

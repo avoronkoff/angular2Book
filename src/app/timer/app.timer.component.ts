@@ -1,8 +1,36 @@
 import {Component} from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes
+} from '@angular/animations';
 
 @Component({
   selector: 'app-timer',
-  templateUrl: './app.timer.component.html'
+  templateUrl: './app.timer.component.html',
+  styleUrls: ['./app.timer.component.css'],
+  animations: [
+    trigger('timerOut', [
+      state('in', style({transform: 'translateX(0)'})),
+      transition('void => *', [
+        animate(1500, keyframes([
+          style({opacity: 0, transform: 'translateY(-100%)', offset: 0}),
+          style({opacity: 1, transform: 'translateY(15px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate(1500, keyframes([
+          style({opacity: 1, transform: 'translateY(0)',     offset: 0}),
+          style({opacity: 1, transform: 'translateY(-15px)', offset: 0.7}),
+          style({opacity: 0, transform: 'translateY(100%)',  offset: 1.0})
+        ]))
+      ])
+    ])
+  ]
 })
 
 export class AppTimerComponent {
@@ -31,7 +59,7 @@ export class AppTimerComponent {
     if(!this.isPaused){
       this.buttonLabel = 'pause';
 
-      if(--this.seconds < 0){
+      if(--this.seconds < 0) {
         this.seconds = 59;
         if(--this.minutes < 0){
           this.timerReset();
