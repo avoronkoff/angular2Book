@@ -3,8 +3,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 @Injectable()
 export class AuthenticationService {
   userlsloggedln: EventEmitter<boolean>;
-  static isAuthorized(): boolean {
-    return !!window.sessionStorage.getItem('token');
+  isAuthorized(): void {
+    this.userlsloggedln.emit(false);
   }
 
   constructor() {
